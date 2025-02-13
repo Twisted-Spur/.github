@@ -17,3 +17,16 @@ Anyone's inputs on the work done within any of these repos are welcome feedback 
     3. sudo apt install temurin-21-jre
     4. sudo update-alternatives --config java
     5. java -version (to confirm JRE 21 default)
+    6. scp ts-services over and run
+    7. npm run build ts-client
+    8. scp ./dist/* to client-dist/
+    9. Set up NGINX to host client-dist/
+        1. sudo apt install nginx
+        2. sudo systemctl start nginx
+        3. sudo systemctl enable nginx
+        4. cp ts-client/nginx/twistedspur to /etc/nginx/sites-available/twistedspur
+        5. sudo ln -s /etc/nginx/sites-available/twistedspur /etc/nginx/sites-enabled/
+        6. sudo nginx -t
+        7. sudo systemctl reload nginx
+    10. Go to http://twistedspur.centralus.cloudapp.azure.com/ in web browser.
+        * If any access issues occur, review VM ports in Azure Portal.
