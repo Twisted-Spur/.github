@@ -12,6 +12,9 @@ Anyone's inputs on the work done within any of these repos are welcome feedback 
 ### Microsoft Azure
 1. Create PostgresSQL Flex Server instance
 2. Create Ubuntu 20.04 LTS VM instance (in same resource group)
+    1. Configure SSH access via private key to VM
+        1. ssh-add C:/Users/{username}/.ssh/{private_key} (or wherever you put the key)
+    2. ssh into VM
     1. wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo apt-key add - echo "deb https://packages.adoptium.net/artifactory/deb focal main" | sudo tee /etc/apt/sources.list.d/adoptium.list
     2. sudo apt update
     3. sudo apt install temurin-21-jre
