@@ -18,7 +18,7 @@ Anyone's inputs on the work done within any of these repos are welcome feedback 
     4. sudo update-alternatives --config java
     5. java -version (to confirm JRE 21 default)
     6. scp ts-services over and run
-    7. Set TS_POSTGRES_PW and other envvars needed before services start.
+    7. Set TS_POSTGRES_PW and other envvars needed before services start in /etc/environment.
     8. Start services.
     7. npm run build ts-client
     8. scp ./dist/* to client-dist/
