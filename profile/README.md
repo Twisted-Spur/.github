@@ -14,10 +14,19 @@ Anyone's inputs on the work done within any of these repos are welcome feedback 
 2. Create Ubuntu 20.04 LTS VM instance (in same resource group)
     1. Configure SSH access via private key to VM
         1. ssh-add C:/Users/{username}/.ssh/{private_key} (or wherever you put the key)
+        2. If needed run ssh-keygen -R hostname to remove previous records from known_hosts file 
     2. ssh into VM
-    1. wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo apt-key add - echo "deb https://packages.adoptium.net/artifactory/deb focal main" | sudo tee /etc/apt/sources.list.d/adoptium.list
-    2. sudo apt update
-    3. sudo apt install temurin-21-jre
+    3. # Add the AdoptOpenJDK repository
+    sudo apt update
+    sudo apt install -y wget apt-transport-https
+    wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo apt-key add -
+    echo "deb https://packages.adoptium.net/artifactory/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+
+    # Update the package list
+    sudo apt update
+
+    # Install Temurin JRE 21
+    sudo apt install -y temurin-21-jre
     4. sudo update-alternatives --config java
     5. java -version (to confirm JRE 21 default)
     6. scp ts-services over and run
