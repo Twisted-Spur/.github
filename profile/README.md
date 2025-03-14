@@ -15,6 +15,10 @@ A self signed cert can be created with openssl with the following command:
 
 ```openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -keyout twistedspur.com.key -out twistedspur.com.crt -subj "//CN=twistedspur.com"   -addext "subjectAltName=DNS:twistedspur.com,DNS:twistedspur.*.com,DNS:localhost,IP:127.0.0.1,IP:::1"```
 
+To then create the PKCS12 format to use in the apps:
+
+```openssl pkcs12 -export -in twistedspur.com.crt -inkey twistedspur.com.key -name "twistedspur" -out twistedspur.p12```
+
 ## Deployment Notes
 
 ### Microsoft Azure Deployment
